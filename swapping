@@ -1,0 +1,43 @@
+import java.util.Scanner;
+public class swap {
+    static void swapping(int a,int b){
+        
+        System.out.println("before A : "  + a +" ");
+        System.out.println("before B : " + b +  " ");
+        // using extra variable
+        // a=b;
+        // b=a;
+        // int temp=a;
+
+        // using add and sub
+        // a=a+b;
+        // b=a-b;
+        // a=a-b;
+
+        //using multiply and divide
+        // a=a*b;
+        // b=a/b;
+        // a=a/b;
+
+        // using jor method
+        a=a^b;
+        b=a^b;
+        a=a^b;
+
+        System.out.println("after A : "  +a+ " ");
+        System.out.println("after B : "  +b+ " ");
+        
+    }
+    public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        System.out.println("enter your number a ");
+        int a= sc.nextInt();
+        
+        System.out.println("enter your number B ");
+        int b= sc.nextInt();
+        
+        swapping(a, b);
+ 
+        
+    }
+}
