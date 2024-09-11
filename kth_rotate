@@ -1,0 +1,24 @@
+
+import java.util.Arrays;
+
+public class rotateArray {
+    public static void main(String[] args) {
+        int arr[]={1,2,3,4,5,6,7,8};
+        int d=3;
+        int n=arr.length;
+        int ans[]=new int[n];
+        int a=0;
+        for(int i=n-d;i<n;i++){ // n=7 , d = 3 , n-d=7-3=4; where 4th index  is 5 so the 5,6,7
+            ans[a]=arr[i];
+            a++;
+            // System.out.print(arr[i]);
+        }
+        for(int i=0;i<n-d;i++){ // start with idx 0 go to (n-d= 7-3=4th is 1,2,3,4 
+            ans[a]=arr[i];
+            a++;
+            // System.out.print(arr[i]);
+        }
+        System.out.println(Arrays.toString(ans));
+        
+    }
+}
