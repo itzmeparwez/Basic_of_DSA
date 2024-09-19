@@ -1,0 +1,9 @@
+class Solution {
+    public static int largest(int[] arr) {
+        arr[] = {1, 8, 7, 56, 90};
+        // code here
+       Arrays.sort(arr); // sort the array 
+       return arr[arr.length - 1]; // print last index 
+        
+    }
+}
