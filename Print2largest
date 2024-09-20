@@ -1,0 +1,11 @@
+// User function Template for Java
+
+class Solution {
+    public int p(int[] arr) {
+    arr[] = {1,3,4,5,7,6}
+        // Code, Here
+        int n=arr.length;
+        Arrays.sort(arr);
+        return arr[arr.length - 2];  
+    }
+}
