@@ -1,0 +1,52 @@
+
+import java.util.Scanner;
+
+public class mul {
+
+    static void multi(int[][]arr,int[][]brr, int r,int c, int r2,int c2){
+        int mull[][]= new int[r][c];
+        for(int i=0;i<r;i++){ //row
+            for(int j=0;j<c2;j++){ //column
+                for(int k=0;k<c;k++){
+                    mull[i][j]+= (arr[i][k] * brr[k][j]);
+                }
+            }
+        }
+        System.out.println("mul of matrix");
+
+        for(int i=0;i<r;i++){
+            for(int j=0;j<c2;j++){
+                System.out.print(mull[i][j]+ " ");
+            }
+            System.out.println();
+        }
+    }
+    
+    public static void main(String[] args) { 
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter your row");
+        int r = sc.nextInt();
+        int c= sc.nextInt();
+
+        int arr [][]=new int[r][c];
+        System.out.println("enter your first input ");
+        for(int i=0;i<r;i++){
+            for(int j=0;j<c;j++){
+                arr[i][j]=sc.nextInt();
+            }
+        } 
+
+        System.out.println("enter your row");
+        int r2= sc.nextInt();
+        int c2= sc.nextInt();
+
+        int brr[][]= new int[r2][c2];
+        System.out.println("enter your second input");
+        for(int i=0;i<r2;i++){
+            for(int j=0;j<c2;j++){
+                brr[i][j]=sc.nextInt();
+            }
+        }         
+        multi(arr, brr, r, c, r2, c2);
+    }
+}
