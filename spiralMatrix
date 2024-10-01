@@ -1,0 +1,71 @@
+
+import java.util.Scanner;
+
+public class spiral {
+    static void  printMatrix(int [][] arr){
+        for(int i=0;i<arr.length;i++){
+            for(int j=0;j<arr.length;j++){
+                System.out.print(arr[i][j]+" ");
+            }
+            System.out.println();
+        }
+    }
+
+    static void printSpiralOrder(int[][] matix,int r,int c){
+        int topRow =0;
+        int bottomRow = r-1;
+        int leftCol = 0;
+        int rightCol =c-1;
+        int total = 0;
+        while (total < r*c) {  
+            // topRow ->  leftCol to rightCol
+            for(int j=leftCol;j<=rightCol && total < r*c  ;j++){
+                System.out.print(matix[topRow][j] + " "); 
+                total++;
+            }
+            topRow++; // not print repeting value and also change boundry value
+
+            // rightCol -> topRow to bottomRow
+            for(int i=topRow;i<=bottomRow && total < r*c ;i++){
+                System.out.print(matix[i][rightCol]+ " "); 
+                total++;
+            }
+            rightCol--;
+
+            // bottomRow ->  rightCol to leftCol
+            for(int j = rightCol;j>=leftCol && total < r*c ;j--){
+                System.out.print(matix[bottomRow][j]+" "); 
+                total++;
+            }
+            bottomRow--;
+
+            // leftcol -> bottomRow to topRow
+            for(int i=bottomRow;i>=topRow && total < r*c ;i--){
+                System.out.print (matix[i][leftCol]+ " ");
+                total++;
+            }
+            leftCol++;
+        }
+
+    }
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        int r= sc.nextInt();
+        int c= sc.nextInt();
+        int [][] matrix = new int[r][c];
+        int total = r*c;
+        for(int i=0;i<r;i++){
+            for(int j=0;j<c;j++){
+                matrix[i][j]=sc.nextInt();
+            }
+        }
+        System.out.println("input matrix");
+        printMatrix(matrix);
+        
+        System.out.println("spiral matrix");
+        printSpiralOrder(matrix, r, c);
+        printMatrix(matrix);
+
+    }
+    
+}
