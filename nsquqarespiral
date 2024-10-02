@@ -1,0 +1,62 @@
+
+import java.util.Scanner;
+
+public class nsquareSpiral {
+    static void  printMatrix(int [][] arr){
+        for(int i=0;i<arr.length;i++){
+            for(int j=0;j<arr.length;j++){
+                System.out.print(arr[i][j]+" ");
+            }
+            System.out.println();
+        }
+    }
+    
+    static int[][] nsquareSpiral(int n){
+        int matix[][] = new int[n][n];
+        int topRow =0;
+        int bottomRow = n-1;
+        int leftCol = 0;
+        int rightCol =n-1;
+        int curr = 1;
+        while (curr <= n*n) { 
+            // topRow ->  leftCol to rightCol
+            for(int j=leftCol;j<=rightCol && curr <= n*n  ;j++){
+                matix[topRow][j]=curr;
+                curr++;
+            }
+            topRow++; // not print repeting value and also change boundry value
+
+            // rightCol -> topRow to bottomRow
+            for(int i=topRow;i<=bottomRow && curr <= n*n ;i++){
+                matix[i][rightCol]=curr;
+                curr++;
+            }
+            rightCol--;
+
+            // bottomRow ->  rightCol to leftCol
+            for(int j = rightCol;j>=leftCol && curr <=n*n ;j--){
+                matix[bottomRow][j]=curr;
+                curr++;
+            }
+            bottomRow--;
+
+            // leftcol -> bottomRow to topRow
+            for(int i=bottomRow;i>=topRow && curr <= n*n ;i--){
+                matix[i][leftCol]=curr;
+                curr++;
+            }
+            leftCol++;
+        }
+        return matix;
+
+    }
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter n");
+        int n=sc.nextInt();
+        int [][] matrix= nsquareSpiral(n);
+        printMatrix(matrix);
+
+    }
+}
