@@ -1,0 +1,17 @@
+class Solution {
+    public void(char[] s) {
+        int left =0;
+        int right =s.length-1;
+
+        while(left<right){
+            // swap the character at the left and right indices
+            char temp = s[left];
+            s[left]=s[right];
+            s[right]=temp;
+            // move the pointer toward the center
+            left++;
+            right--;
+        }
+
+    }
+}
