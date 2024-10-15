@@ -1,0 +1,17 @@
+class Solution {
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        int n = nums.length; // Array ki length ko n mein store karte hain
+        
+        for (int i = 0; i < n; i++) { // Pehla loop, i ke liye 0 se n tak
+            // Dusra loop j ko i+1 se shuru karte hain aur ensure karte hain j <= i + k ho
+            for (int j = i + 1; j < n && j <= i + k; j++) {
+                // Agar nums[i] aur nums[j] barabar hain, toh true return karo
+                if (nums[i] == nums[j]) {
+                    return true; // Duplicate mil gaya, isliye true return karte hain
+                }
+            }
+        }
+        // Agar loop ke baad bhi duplicate nahi mila, toh false return karo
+        return false;
+    }
+}
