@@ -1,0 +1,27 @@
+class Solution {
+    public boolean check(int[] nums) {
+        int n = nums.length; // Array ki length ko n mein store karte hain
+        int count = 0; // Count ko 0 se initialize karte hain, yeh track karega kitne rotation points hain
+        
+        // Pehla check: Agar first element last element se chhota hai, toh count badhao
+        if (nums[0] < nums[n - 1]) {
+            count++; // Ek rotation point mila, isliye count ko increase karte hain
+        }
+        
+        // Array ke har element ko check karte hain, except last one
+        for (int i = 0; i < n - 1; i++) {
+            // Agar current element agle element se bada hai, toh count increase karte hain
+            if (nums[i] > nums[i + 1]) {
+                count++;
+            }
+            
+            // Agar count 1 se zyada ho gaya toh array rotated sorted nahi hai, false return karte hain
+            if (count > 1) {
+                return false;
+            }
+        }
+        
+        // Agar count 1 ya 0 hai, toh array rotated sorted hai, true return karte hain
+        return true;
+    }
+}
