@@ -1,0 +1,18 @@
+import java.math.BigInteger;
+
+class Solution {
+    public String addBinary(String a, String b) {
+        
+        // BigInteger ka use karte hue binary string 'a' ko decimal number mein convert karenge.
+        BigInteger i = new BigInteger(a, 2); // 'a' ko binary (base 2) mein treat karte hain.
+        
+        // BigInteger ka use karke binary string 'b' ko bhi decimal number mein convert karenge.
+        BigInteger j = new BigInteger(b, 2); // 'b' ko binary (base 2) format mein treat karte hain.
+        
+        // Dono BigInteger ko add karte hain.
+        BigInteger sum = i.add(j);
+        
+        // Sum ko binary (base 2) string mein convert karke return karenge.
+        return sum.toString(2);
+    }
+}
