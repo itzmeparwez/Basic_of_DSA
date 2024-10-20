@@ -1,0 +1,24 @@
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        // Ek array arr banate hain jisme result store karenge. Shuru mein dono indexes ko -1 set karte hain (default).
+        int[] arr = new int[2];
+        arr[0] = arr[1] = -1; // Agar target na mile toh ye -1 hi return hoga.
+
+        // Array ko traverse karte hain target ko dhoondhne ke liye.
+        for (int i = 0; i < nums.length; i++) {
+            // Agar target value mil jaye toh starting index ko set karte hain.
+            if (nums[i] == target) {
+                arr[0] = i;
+
+                // Phir next consecutive elements ko check karte hain agar woh bhi target ke barabar ho.
+                while (i < nums.length && nums[i + 1] == target) {
+                    i++; // Index ko aage badhate hain jab tak target milta rahe.
+                    arr[1] = i; // Last match hone wale index ko set karte hain.
+                    break; // Sirf pehle occurrence ke liye break karte hain.
+                }
+            }
+        }
+
+        return arr; // Final array jisme first aur last index of target store hoga return karte hain.
+    }
+}
