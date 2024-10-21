@@ -1,0 +1,29 @@
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        // Pehle strings ka length check karte hain, agar alag hain to false return karenge
+        int m = s.length();
+        int n = t.length();
+        if(m != n) {
+            return false; // Agar length same nahi hai to ye anagram nahi ho sakte
+        }
+        else {
+            // Ek array bana rahe hain jo har letter ka count track karega
+            int count[] = new int[26];
+            // Pehli string ke har character ka count badha rahe hain
+            for(int i = 0; i < m; i++) {
+                count[s.charAt(i) - 'a']++;
+            }
+            // Dusri string ke har character ka count ghata rahe hain
+            for(int i = 0; i < n; i++) {
+                count[t.charAt(i) - 'a']--;
+            }
+            // Agar kisi character ka count zero nahi hai, to anagram nahi hain
+            for(int i = 0; i < count.length; i++) {
+                if(count[i] != 0) {
+                    return false; // Count alag hone par false return karenge
+                }
+            }
+            return true; // Agar sab count zero hain to anagram hai
+        }
+    }
+}
