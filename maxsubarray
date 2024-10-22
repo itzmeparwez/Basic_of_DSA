@@ -1,0 +1,30 @@
+class Solution {
+    public int maxSubArray(int[] nums) {
+        // Initialize sum to 0, this will store the current subarray sum
+        int sum = 0;
+
+        // Initialize maxi to the smallest possible integer value to store the maximum sum found so far
+        int maxi = Integer.MIN_VALUE;
+
+        // Get the length of the input array
+        int n = nums.length;
+
+        // Traverse through each element of the array
+        for(int i = 0; i < n; i++) {
+            // Add the current element to the sum
+            sum = sum + nums[i];
+
+            // If the current sum is greater than the maximum sum found so far, update the maximum
+            if (sum > maxi) {
+                maxi = sum;
+            }
+
+            // If the sum becomes negative, reset it to 0 because a negative sum won't help in finding the max sum
+            if (sum < 0) {
+                sum = 0;
+            }
+        }
+        // Return the maximum subarray sum found
+        return maxi;
+    }
+}
