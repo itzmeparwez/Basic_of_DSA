@@ -1,0 +1,61 @@
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        // Dono arrays ko merge karke ek sorted array banao
+        int[] ans = merge(nums1, nums2);
+        
+        // Agar merged array ka length even hai to do beech ke elements ka average nikalna hai
+        if (ans.length % 2 == 0) {
+            // Correctly do middle elements ka average calculate karo
+            double ans2 = (double) (ans[ans.length / 2] + ans[ans.length / 2 - 1]) / 2;
+            return ans2;
+        } else {
+            // Agar array ka length odd hai to directly middle element ko return karo
+            return (double) ans[ans.length / 2];
+        }
+    }
+
+    public int[] merge(int[] a1, int[] a2) {
+        // Do sorted arrays ko merge karne ke liye naya array banate hain
+        int[] ans = new int[a1.length + a2.length];
+        int p1 = 0;  // Pehle array ke liye pointer
+        int p2 = 0;  // Dusre array ke liye pointer
+        int p3 = 0;  // Merged array ke liye pointer
+
+        // Dono arrays ko merge karke ek sorted array banate hain
+        while (p1 < a1.length || p2 < a2.length) {
+            // Agar p1 array ke bounds ke andar hai to v1 uska current element hoga
+            // warna Integer.MAX_VALUE assign karenge
+            int v1 = p1 < a1.length ? a1[p1] : Integer.MAX_VALUE;
+             // int v1;
+            // if (p1 < a1.length) {
+            //      v1 = a1[p1];
+            // } else {
+            //     v1 = Integer.MAX_VALUE;
+            // }
+
+            // Agar p2 array ke bounds ke andar hai to v2 uska current element hoga
+            // warna Integer.MAX_VALUE assign karenge
+            int v2 = p2 < a2.length ? a2[p2] : Integer.MAX_VALUE;
+             // int v2;
+            // if (p2 < a2.length) {
+            //      v2 = a2[p2];
+            // } else {
+            //     v2 = Integer.MAX_VALUE;
+            // }
+
+
+            // Chhote element ko merged array me daalo aur pointer badhao
+            if (v1 < v2) {
+                ans[p3] = v1;
+                p1++;
+            } else {
+                ans[p3] = v2;
+                p2++;
+            }
+            p3++;  // Merged array ka pointer badhao
+        }
+
+        // Merged sorted array ko return karo
+        return ans;
+    }
+}
