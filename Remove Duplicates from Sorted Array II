@@ -1,0 +1,27 @@
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        // Agar array ki length 3 se chhoti hai, toh koi duplicates remove karne ki zarurat nahi
+        // direct array ki length return kar do
+        if (nums.length < 3) {
+            return nums.length;
+        }
+
+        // ind ko 2 pe initialize karte hain kyunki har element ko maximum do baar allow kar rahe hain
+        int ind = 2;
+
+        // Poore array ko traverse karenge, 0 se lekar end tak
+        for (int i = 2; i < nums.length; i++) {
+            // Har element ke liye check karenge ki kya current element `nums[i]` 
+            // aur jo element `ind - 2` pe hai, wo alag hai ya nahi.
+            if (nums[i] != nums[ind - 2]) {
+                // Agar element unique hai (matlab pehle do baar nahi aaya), toh use next valid position pe daal do
+                nums[ind] = nums[i];
+                // ind ko increment karte jao taaki next valid position pe set kar sake
+                ind++;
+            }
+        }
+
+        // ind return karo jo unique ya valid elements ke count ko represent karega
+        return ind;
+    }
+}
