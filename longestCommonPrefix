@@ -1,0 +1,28 @@
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+      // Ek StringBuilder banate hain jo result store karega.
+      StringBuilder result = new StringBuilder();
+      
+      // Sabse pehle array ko sort karenge, taki first aur last string ko compare kar sakein.
+      Arrays.sort(strs);
+      
+      // Pehli string ko char array mein convert kar rahe hain, kyunki har character ko compare karna hoga.
+      char[] first = strs[0].toCharArray();
+      
+      // Last string ko bhi char array mein convert karenge.
+      char[] last = strs[strs.length-1].toCharArray();
+
+      // Pehli aur last string ke har character ko compare karenge jab tak match ho rahe hain.
+      for (int i = 0; i < first.length; i++) {
+        // Agar koi character match nahi karta, toh loop break kar do.
+        if (first[i] != last[i])
+          break;
+        
+        // Agar match karta hai, toh result mein us character ko append karte jao.
+        result.append(first[i]);
+      }
+      
+      // Final result ko string mein convert karke return kar do.
+      return result.toString();
+    }
+}
