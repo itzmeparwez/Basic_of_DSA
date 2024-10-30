@@ -1,0 +1,20 @@
+class Solution {
+    public List<Integer> getRow(int rowIndex) {
+        // Ek Integer array 'result' banate hain jo rowIndex+1 size ka hai
+        Integer[] result = new Integer[rowIndex + 1];
+        
+        // Pehla element hamesha 1 hota hai, toh usko initialize karte hain
+        result[0] = 1;
+        
+        // Loop chalate hain 1 se lekar rowIndex tak, har row ke elements ko calculate karte hain
+        for (int i = 1; i <= rowIndex; i++) {
+            // Har element ko calculate karte hain Pascal Triangle ke formula se:
+            // result[i] = (result[i-1] * (rowIndex - i + 1)) / i
+            // Yahaan 'long' ka cast karte hain taaki integer overflow na ho
+            result[i] = (int) (((long) result[i - 1] * (rowIndex - i + 1)) / i);
+        }
+        
+        // Array ko List mein convert karte hain aur return kar dete hain
+        return Arrays.asList(result);
+    }
+}
