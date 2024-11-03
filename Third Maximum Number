@@ -1,0 +1,27 @@
+import java.util.Arrays;
+
+class Solution {
+    public int thirdMax(int[] nums) {
+        // Array ko sort karenge taaki elements chhote se bada order me ho jaayein
+        Arrays.sort(nums);
+        
+        int n = nums.length;  // Array ka size le liya
+        int max = 1;          // Pehle se largest element ko consider kar rahe hain
+
+        // Array ko last se pehle element tak loop me reverse order me chalate hain
+        for (int i = n - 2; i >= 0; i--) {
+            // Agar current element (nums[i]) agle element (nums[i+1]) se different hai, to distinct number mila
+            if (nums[i] < nums[i + 1]) {
+                max++;  // Ek aur distinct element mila to max ko 1 se bada do
+            }
+            
+            // Agar 3 distinct elements mil gaye hain, to yeh 3rd largest element hoga, isliye return kar do
+            if (max == 3) {
+                return nums[i];  // yeh 3rd distinct largest number hai
+            }
+        }
+        
+        // Agar 3 distinct elements nahi mile to array ka last element (largest) return kar do
+        return nums[n - 1];
+    }
+}
