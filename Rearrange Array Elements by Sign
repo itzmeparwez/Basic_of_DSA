@@ -1,0 +1,24 @@
+class Solution {
+    public int[] rearrangeArray(int[] nums) {
+        int n = nums.length;  // Array ka length n me store karte hain
+        int[] ans = new int[n];  // Naya array banate hain answer store karne ke liye
+        int posInt = 0;  // Positive numbers ke liye index, jo 0 se start hoga
+        int negInt = 1;  // Negative numbers ke liye index, jo 1 se start hoga
+
+        // Loop ke through array ko traverse karte hain
+        for (int i = 0; i < n; i++) {
+            // Agar element negative hai
+            if (nums[i] < 0) {
+                ans[negInt] = nums[i];  // Negative element ko negInt index pe daalo
+                negInt += 2;  // Next negative position ke liye index ko 2 se increment karo
+            }
+            else {
+                ans[posInt] = nums[i];  // Positive element ko posInt index pe daalo
+                posInt += 2;  // Next positive position ke liye index ko 2 se increment karo
+            }
+        }
+
+        return ans;  // Rearranged array ko return karo
+
+    }
+}
