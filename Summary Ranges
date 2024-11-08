@@ -1,0 +1,25 @@
+class Solution {
+    // yeh function integer array ke consecutive numbers ko range ke form mein summarize karega
+    public List<String> summaryRanges(int[] nums) {
+        List<String> output = new ArrayList<>(); // output list banate hain
+        
+        // array ke har element ke liye loop chalayenge
+        for (int i = 0; i < nums.length; i++) {
+            int start = nums[i]; // current range ka start point
+
+            // jab tak consecutive numbers milte hain, i ko increment karte rahenge
+            while (i + 1 < nums.length && nums[i + 1] - nums[i] == 1)
+                i++;
+
+            // agar range ka start aur end point alag hain to "start->end" format mein add karenge
+            if (start != nums[i]) {
+                output.add("" + start + "->" + nums[i]);
+            } 
+            // agar range mein sirf ek hi number hai to usko single number ki tarah add karenge
+            else {
+                output.add("" + start);
+            }
+        }
+        return output; // final summarized output list return karenge
+    }
+}
