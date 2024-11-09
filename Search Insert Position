@@ -1,0 +1,27 @@
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        // Pehle array ko traverse karte hain aur check karte hain agar target value array mein exist karti ho.
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == target) {
+                // Agar target value mil jaati hai, toh uska index return karte hain.
+                return i;    
+            }
+        }
+        
+        // Agar target value array ke sabse pehle element se chhoti hai, toh uska index 0 return karte hain.
+        if (nums[0] > target) {
+            return 0;
+        }
+        
+        // Phir check karte hain target value ko array ke beech ke elements ke beech mein insert karna ho.
+        for (int i = 0; i < nums.length - 1; i++) {
+            // Agar current element target se chhota hai aur next element target se bada hai, toh target yahan insert hoga.
+            if (nums[i] < target && nums[i + 1] > target) {
+                return i + 1;
+            }
+        }
+        
+        // Agar target value array ke sabhi elements se badi hai, toh array ke end mein insert hoga.
+        return nums.length;
+    }
+}
