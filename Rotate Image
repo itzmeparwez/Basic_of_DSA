@@ -1,0 +1,22 @@
+class Solution {
+    public void rotate(int[][] matrix) {
+        // Pehla loop: matrix ko transpose karne ke liye
+        for (int i = 0; i < matrix.length; i++) { // Rows ke liye loop
+            for (int j = i; j < matrix.length; j++) { // Columns ke liye loop, sirf diagonal ke upar
+                int temp = 0; // Temporary variable
+                temp = matrix[i][j]; // Current element ko temp mein store karo
+                matrix[i][j] = matrix[j][i]; // Swap kar do element i,j ko j,i se
+                matrix[j][i] = temp; // Temp ka value j,i mein daal do
+            }
+        }
+        // Dusra loop: har row ko reverse karne ke liye
+        for (int i = 0; i < matrix.length; i++) { // Rows ke liye loop
+            for (int j = 0; j < matrix.length / 2; j++) { // Sirf aadhi row reverse karna hai
+                int temp = 0; // Temporary variable
+                temp = matrix[i][j]; // Left element ko temp mein store karo
+                matrix[i][j] = matrix[i][matrix.length - 1 - j]; // Left ko right se replace karo
+                matrix[i][matrix.length - 1 - j] = temp; // Right ko temp (left) se replace karo
+            }
+        }
+    }
+}
